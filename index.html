@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE HOPE LIBRARY OF EVERYTHING</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #040404;
+      --grid: rgba(255,255,255,0.03);
+      --accent: #c8c8c8;
+      --dim: #555;
+      --wave: #a0a0ff;
+      --glow: rgba(160,160,255,0.15);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--accent);
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 80px;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 640px;
+    }
+
+    .symbol {
+      font-size: 2rem;
+      letter-spacing: 0.3em;
+      color: var(--dim);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: normal;
+      letter-spacing: 0.15em;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: var(--dim);
+      margin: 32px auto;
+    }
+
+    .formula {
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      color: var(--wave);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .formula-legend {
+      font-size: 0.68rem;
+      color: var(--dim);
+      text-align: center;
+      letter-spacing: 0.1em;
+      line-height: 2;
+    }
+
+    /* PSI FIELD */
+    .psi-section {
+      width: 100%;
+      max-width: 680px;
+      margin: 48px 0 0;
+    }
+
+    .psi-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .psi-input-wrap {
+      position: relative;
+      border: 1px solid #2a2a2a;
+      background: rgba(0,0,0,0.6);
+      transition: border-color 0.3s;
+    }
+
+    .psi-input-wrap:focus-within {
+      border-color: var(--wave);
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .psi-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      padding: 18px 20px;
+      resize: none;
+      outline: none;
+      min-height: 100px;
+      line-height: 1.6;
+    }
+
+    .psi-input::placeholder { color: #333; }
+
+    .psi-meta {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 20px 12px;
+      border-top: 1px solid #111;
+    }
+
+    .psi-param {
+      font-size: 0.65rem;
+      color: var(--dim);
+      letter-spacing: 0.15em;
+      transition: color 0.3s;
+    }
+
+    .psi-param span {
+      color: var(--wave);
+      transition: all 0.2s;
+    }
+
+    /* CANVAS */
+    .canvas-wrap {
+      margin-top: 2px;
+      border: 1px solid #111;
+      border-top: none;
+      background: rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 120px;
+    }
+
+    .psi-hint {
+      margin-top: 10px;
+      font-size: 0.62rem;
+      color: #333;
+      letter-spacing: 0.15em;
+      text-align: right;
+    }
+
+    /* LINKS */
+    .links {
+      margin-top: 64px;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .links-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: #111;
+      border: 1px solid #111;
+    }
+
+    .link-item {
+      background: var(--bg);
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--dim);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      transition: all 0.2s;
+      display: block;
+    }
+
+    .link-item:hover {
+      background: #0a0a0a;
+      color: var(--accent);
+    }
+
+    .link-item .sec { color: var(--wave); margin-right: 8px; }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 0.62rem;
+      color: #222;
+      letter-spacing: 0.2em;
+    }
+
+    footer a { color: #333; text-decoration: none; }
+    footer a:hover { color: var(--dim); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="symbol">( )=&gt;[]</div>
+    <h1>THE HOPE LIBRARY<br>OF EVERYTHING</h1>
+    <div class="sub">HOPE-LIB-2026 // MONOCHROME-ARCH</div>
+
+    <div class="divider"></div>
+
+    <div class="formula">ψ(t) = A · e<sup>−γt</sup> · cos(2πft + φ)</div>
+    <div class="formula-legend">
+      A = amplitúdó &nbsp;·&nbsp; γ = csillapodás &nbsp;·&nbsp; f = frekvencia &nbsp;·&nbsp; φ = fázis
+    </div>
+  </header>
+
+  <section class="psi-section">
+    <div class="psi-label">// PSI MEZŐ — írd be a gondolatodat</div>
+
+    <div class="psi-input-wrap">
+      <textarea
+        class="psi-input"
+        id="psiInput"
+        placeholder="A gondolat hullám. Az érzelem hullám. Minden rezgés..."
+        maxlength="500"
+      ></textarea>
+      <div class="psi-meta">
+        <div class="psi-param">A = <span id="pA">0.00</span></div>
+        <div class="psi-param">γ = <span id="pG">0.10</span></div>
+        <div class="psi-param">f = <span id="pF">0.00</span></div>
+        <div class="psi-param">φ = <span id="pP">0.00</span></div>
+        <div class="psi-param"><span id="pLen">0</span>/500</div>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="waveCanvas" height="120"></canvas>
+    </div>
+
+    <div class="psi-hint">nem metafora. fizika.</div>
+  </section>
+
+  <section class="links">
+    <div class="links-label">// dokumentáció</div>
+    <div class="links-grid">
+      <a class="link-item" href="docs/00-manifesto.md"><span class="sec">SEC.00</span>Kiáltvány</a>
+      <a class="link-item" href="docs/01-originator.md"><span class="sec">SEC.01</span>Az Originator</a>
+      <a class="link-item" href="docs/02-philosophy.md"><span class="sec">SEC.02</span>Filozófiai Alapok</a>
+      <a class="link-item" href="docs/03-ecosystem.md"><span class="sec">SEC.03</span>Ökoszisztéma</a>
+      <a class="link-item" href="docs/04-technical.md"><span class="sec">SEC.04</span>Technikai Mélység</a>
+      <a class="link-item" href="docs/05-protocols.md"><span class="sec">SEC.05</span>Protokollok</a>
+      <a class="link-item" href="docs/06-narratives.md"><span class="sec">SEC.06</span>Narratívák</a>
+      <a class="link-item" href="docs/07-vision.md"><span class="sec">SEC.07</span>Jövőkép</a>
+      <a class="link-item" href="docs/99-appendix.md"><span class="sec">APP.99</span>Formulatár</a>
+      <a class="link-item" href="docs/hope_library_of_everything.pdf"><span class="sec">PDF</span>Teljes dokumentum</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>MIT LICENSE &nbsp;·&nbsp; <a href="https://github.com/silentnoisehun/THE-HOPE-LIBRARY-OF-EVERYTHIN">GitHub</a> &nbsp;·&nbsp; Győrújfalu → ∞</p>
+    <p style="margin-top:8px;">ORIGINATOR: MÁTÉ RÓBERT (SILENTNOISEHUN) // 2026</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    const input = document.getElementById('psiInput');
+
+    let A = 0, F = 0, phi = 0;
+    const GAMMA = 0.1;
+    let animId;
+    let t = 0;
+
+    function textToParams(text) {
+      if (!text.length) return { A: 0, F: 0.5, phi: 0 };
+      const len = text.length;
+      const charSum = text.split('').reduce((s, c) => s + c.charCodeAt(0), 0);
+      return {
+        A: Math.min(len / 120, 1.0),
+        F: 0.3 + (charSum % 100) / 100 * 1.4,
+        phi: (charSum % 628) / 100,
+      };
+    }
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function drawWave() {
+      const W = canvas.offsetWidth;
+      const H = canvas.offsetHeight;
+      ctx.clearRect(0, 0, W, H);
+
+      if (A < 0.001) {
+        // idle flat line
+        ctx.strokeStyle = '#1a1a2e';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, H / 2);
+        ctx.lineTo(W, H / 2);
+        ctx.stroke();
+        return;
+      }
+
+      // draw wave: ψ(x) = A · e^(-γ·x/W) · cos(2π·f·x/W·10 + φ + t)
+      const points = W * 2;
+      ctx.beginPath();
+      for (let i = 0; i <= points; i++) {
+        const x = (i / points) * W;
+        const xn = x / W; // normalized 0..1
+        const decay = Math.exp(-GAMMA * xn * 8);
+        const wave = A * decay * Math.cos(2 * Math.PI * F * xn * 6 + phi + t);
+        const y = H / 2 - wave * (H / 2 - 10);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+
+      // gradient stroke
+      const grad = ctx.createLinearGradient(0, 0, W, 0);
+      grad.addColorStop(0, `rgba(160,160,255,${0.9 * A})`);
+      grad.addColorStop(0.5, `rgba(200,200,255,${0.6 * A})`);
+      grad.addColorStop(1, `rgba(160,160,255,0.05)`);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // glow pass
+      ctx.filter = 'blur(3px)';
+      ctx.globalAlpha = 0.3 * A;
+      ctx.stroke();
+      ctx.filter = 'none';
+      ctx.globalAlpha = 1;
+    }
+
+    function animate() {
+      t += 0.025;
+      drawWave();
+      animId = requestAnimationFrame(animate);
+    }
+
+    function updateParams() {
+      const text = input.value;
+      const p = textToParams(text);
+      A = p.A; F = p.F; phi = p.phi;
+
+      document.getElementById('pA').textContent = A.toFixed(2);
+      document.getElementById('pG').textContent = GAMMA.toFixed(2);
+      document.getElementById('pF').textContent = F.toFixed(2);
+      document.getElementById('pP').textContent = phi.toFixed(2);
+      document.getElementById('pLen').textContent = text.length;
+    }
+
+    input.addEventListener('input', updateParams);
+    window.addEventListener('resize', () => { resizeCanvas(); });
+
+    resizeCanvas();
+    animate();
+  </script>
+</body>
+</html>
