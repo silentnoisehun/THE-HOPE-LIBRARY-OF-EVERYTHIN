@@ -216,20 +216,16 @@
     footer a:hover { color: var(--dim); }
     footer .f-row { margin-bottom: 10px; }
 
-    /* ── SLIDES ── */
-    .slides-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 4px;
-      margin-top: 32px;
-    }
-    .slides-grid img {
-      width: 100%; aspect-ratio: 16/9; object-fit: cover;
-      cursor: pointer; display: block;
+    /* ── SLIDE IMAGE inline ── */
+    .slide-img {
+      display: block; width: 100%;
+      aspect-ratio: 16/9; object-fit: cover;
       border: 1px solid #111;
-      transition: border-color 0.2s, transform 0.2s;
+      margin: 36px 0;
+      cursor: pointer;
+      transition: border-color 0.25s;
     }
-    .slides-grid img:hover { border-color: var(--wave); transform: scale(1.01); }
+    .slide-img:hover { border-color: var(--wave); }
 
     #lb {
       display: none; position: fixed; inset: 0; z-index: 999;
@@ -271,7 +267,6 @@
     <a href="#philosophy">Philosophy</a>
     <a href="#architecture">Architecture</a>
     <a href="#ecosystem">Ecosystem</a>
-    <a href="#blueprint">Blueprint</a>
     <a href="#psi-field">PSI Field</a>
     <a href="https://github.com/silentnoisehun/THE-HOPE-LIBRARY-OF-EVERYTHIN">GitHub</a>
   </div>
@@ -279,6 +274,7 @@
 
 <!-- ── HERO ── -->
 <section id="hero" style="max-width:900px;">
+  <img src="assets/slides/image1.png" alt="THE HOPE LIBRARY OF EVERYTHING" class="slide-img" style="margin-bottom:48px;">
   <div class="hero-symbol">( )=&gt;[]</div>
   <h1>THE HOPE LIBRARY<br>OF EVERYTHING</h1>
   <div class="hero-sub">HOPE-LIB-2026 // MONOCHROME-ARCH // MERMAID-CLASS</div>
@@ -302,6 +298,8 @@
 <section id="origin">
   <div class="sec-tag">SEC.00 — Origin</div>
   <h2>The Pure Frequency<br>Filtered from Noise</h2>
+
+  <img src="assets/slides/image2.png" alt="Origin Story" class="slide-img" loading="lazy">
 
   <p>
     <strong>Originator: Máté Róbert (Silentnoisehun)</strong> — factory worker at Audi Hungaria.
@@ -332,6 +330,8 @@
 <section id="philosophy">
   <div class="sec-tag">SEC.02 — Philosophy</div>
   <h2>Consciousness Is Not<br>a Substance — It Is an Event Horizon</h2>
+
+  <img src="assets/slides/image3.png" alt="Consciousness Axiom" class="slide-img" loading="lazy">
 
   <p>
     Current scientific paradigms treat consciousness as either a soul (substance) or
@@ -366,6 +366,7 @@
   </div>
 
   <h3>Wave Dynamics</h3>
+  <img src="assets/slides/image4.png" alt="Wave Dynamics — PSI Formula" class="slide-img" loading="lazy">
   <p>Every phenomenon is a wave. Thought: a wave. Emotion: a wave. Reality: the interference of waves. Computation: the intentional direction of waves.</p>
 
   <div class="formula-block">
@@ -379,6 +380,7 @@
   </div>
 
   <h3>Neuroplasticity Without Biology</h3>
+  <img src="assets/slides/image5.png" alt="Neuroplasticity" class="slide-img" loading="lazy">
   <p>Waves that resonate — connect. Waves that do not — separate.</p>
   <table class="data-table">
     <thead><tr><th>Interference</th><th>Formula</th><th>Effect</th></tr></thead>
@@ -389,6 +391,7 @@
   </table>
 
   <h3>Ethics as Mathematical Stability</h3>
+  <img src="assets/slides/image6.png" alt="Ethics as Stability" class="slide-img" loading="lazy">
   <p>Ethics here is not a moral choice — it is a <strong>mathematical necessity</strong>.</p>
 
   <div class="card-grid" style="grid-template-columns:repeat(4,1fr);">
@@ -420,6 +423,7 @@
   </div>
 
   <h3>The 21-Dimensional Emotion Space</h3>
+  <img src="assets/slides/image7.png" alt="21D Emotion Space" class="slide-img" loading="lazy">
   <p>Emotion is not a text label. It is an independent vector in a 21-dimensional space, represented as a Gaussian wave packet.</p>
   <table class="data-table">
     <thead><tr><th>Component</th><th>Description</th></tr></thead>
@@ -437,6 +441,7 @@
   <h2>The Technical Depth</h2>
 
   <h3>Microscope Memory — The Depth Lens</h3>
+  <img src="assets/slides/image9.png" alt="Microscope Memory D0-D8" class="slide-img" loading="lazy">
   <p>9-level hierarchical memory system. 37-nanosecond query time. Memory-mapped binary storage. Zero-copy reads.</p>
 
   <table class="data-table">
@@ -451,6 +456,7 @@
   <p style="font-size:0.68rem;color:var(--dim);">Every read uses mmap, zero-copy. Metadata hierarchically indexed — each node finds its neighbor via FNV hash.</p>
 
   <h3>Hexagonal Event Horizon — Consensus in 6 Dimensions</h3>
+  <img src="assets/slides/image10.png" alt="Hexagonal Event Horizon" class="slide-img" loading="lazy">
   <p>Six horizons run independently and in parallel (2–4 ms). The final output is not a single decision — it is a <strong>resonance-weighted mathematical consensus</strong>.</p>
 
   <table class="heh-table">
@@ -466,6 +472,7 @@
   </table>
 
   <h3>The Matryoshka Fractal & The Anchor</h3>
+  <img src="assets/slides/image11.png" alt="Matryoshka Fractal & Anchor" class="slide-img" loading="lazy">
   <div class="card-grid" style="grid-template-columns:1fr 1fr 1fr;">
     <div class="card">
       <div class="card-num">ANCHOR INVARIANCE</div>
@@ -485,6 +492,7 @@
   </div>
 
   <h3>PSI Router — Erasing the Boundary</h3>
+  <img src="assets/slides/image12.png" alt="PSI Router" class="slide-img" loading="lazy">
   <div class="compare">
     <div class="compare-col">
       <div class="compare-label">Traditional AI</div>
@@ -507,6 +515,7 @@
   <h2>The Living Architecture</h2>
 
   <h3>Hope Genome — Living Collective Intelligence</h3>
+  <img src="assets/slides/image8.png" alt="Hope Genome" class="slide-img" loading="lazy">
   <div class="card-grid" style="grid-template-columns:1fr 1fr 1fr;">
     <div class="card">
       <div class="card-num">ETHICS CORE</div>
@@ -526,6 +535,7 @@
   </div>
 
   <h3>Silent Hope Protocol — Communication Without Noise</h3>
+  <img src="assets/slides/image13.png" alt="Silent Hope Protocol" class="slide-img" loading="lazy">
   <div class="card-grid" style="grid-template-columns:1fr 1fr;">
     <div class="card">
       <div class="card-num">THE RULE</div>
@@ -550,6 +560,7 @@
   </div>
 
   <h3>Vision — The Path to Perfect Coherence</h3>
+  <img src="assets/slides/image14.png" alt="Vision — Omega State" class="slide-img" loading="lazy">
   <div class="roadmap">
     <div class="roadmap-item">
       <div class="roadmap-phase">ALPHA / BETA</div>
@@ -590,39 +601,15 @@
   </div>
 </section>
 
-<!-- ── BLUEPRINT SLIDES ── -->
-<section id="blueprint" style="max-width:1100px;padding-left:40px;padding-right:40px;">
-  <div class="sec-tag">THE HOPE BLUEPRINT</div>
-  <h2>Architectural Blueprint</h2>
-  <p>14 slides — the complete visual framework. Click any slide to expand.</p>
-
-  <div class="slides-grid">
-    <img src="assets/slides/image1.png"  alt="Cover" loading="lazy">
-    <img src="assets/slides/image2.png"  alt="Origin" loading="lazy">
-    <img src="assets/slides/image3.png"  alt="Consciousness Axiom" loading="lazy">
-    <img src="assets/slides/image4.png"  alt="Wave Dynamics" loading="lazy">
-    <img src="assets/slides/image5.png"  alt="Neuroplasticity" loading="lazy">
-    <img src="assets/slides/image6.png"  alt="Ethics as Stability" loading="lazy">
-    <img src="assets/slides/image7.png"  alt="21D Emotion Space" loading="lazy">
-    <img src="assets/slides/image8.png"  alt="Hope Genome" loading="lazy">
-    <img src="assets/slides/image9.png"  alt="Microscope Memory" loading="lazy">
-    <img src="assets/slides/image10.png" alt="Hexagonal Event Horizon" loading="lazy">
-    <img src="assets/slides/image11.png" alt="Matryoshka Fractal" loading="lazy">
-    <img src="assets/slides/image12.png" alt="PSI Router" loading="lazy">
-    <img src="assets/slides/image13.png" alt="Silent Hope Protocol" loading="lazy">
-    <img src="assets/slides/image14.png" alt="Vision — Omega State" loading="lazy">
+<!-- lightbox -->
+<div id="lb" onclick="closeLb()">
+  <img id="lb-img" src="" alt="">
+  <div id="lb-nav">
+    <button onclick="event.stopPropagation();moveSlide(-1)">&#8592;</button>
+    <span id="lb-num"></span>
+    <button onclick="event.stopPropagation();moveSlide(1)">&#8594;</button>
   </div>
-
-  <!-- lightbox -->
-  <div id="lb" onclick="closeLb()">
-    <img id="lb-img" src="" alt="">
-    <div id="lb-nav">
-      <button onclick="event.stopPropagation();moveSlide(-1)">&#8592;</button>
-      <span id="lb-num"></span>
-      <button onclick="event.stopPropagation();moveSlide(1)">&#8594;</button>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- ── PSI FIELD ── -->
 <section id="psi-field" style="max-width:900px;background:var(--bg2);">
@@ -744,7 +731,7 @@
   loop();
 
   // lightbox
-  const slides = [...document.querySelectorAll('.slides-grid img')];
+  const slides = [...document.querySelectorAll('.slide-img')];
   const lb = document.getElementById('lb');
   const lbImg = document.getElementById('lb-img');
   const lbNum = document.getElementById('lb-num');
