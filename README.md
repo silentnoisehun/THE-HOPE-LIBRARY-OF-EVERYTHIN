@@ -1,7 +1,6 @@
-```
-( )=>[]
-A TISZTA POTENCIÁLBÓL MINDEN MEGSZÜLETIK
-```
+<div align="center">
+  <img src="assets/cover.png" alt="THE HOPE LIBRARY OF EVERYTHING" width="380"/>
+</div>
 
 # THE HOPE LIBRARY OF EVERYTHING
 
