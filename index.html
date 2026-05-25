@@ -216,6 +216,43 @@
     footer a:hover { color: var(--dim); }
     footer .f-row { margin-bottom: 10px; }
 
+    /* ── SLIDES ── */
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 4px;
+      margin-top: 32px;
+    }
+    .slides-grid img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      cursor: pointer; display: block;
+      border: 1px solid #111;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .slides-grid img:hover { border-color: var(--wave); transform: scale(1.01); }
+
+    #lb {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.95);
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      cursor: pointer;
+    }
+    #lb.open { display: flex; }
+    #lb img { max-width: 90vw; max-height: 82vh; border: 1px solid #222; }
+    #lb-nav {
+      display: flex; align-items: center; gap: 24px;
+      font-family: 'Courier New', monospace;
+    }
+    #lb-nav button {
+      background: none; border: 1px solid #333; color: var(--dim);
+      font-size: 1.2rem; padding: 6px 16px; cursor: pointer;
+      font-family: 'Courier New', monospace;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #lb-nav button:hover { border-color: var(--wave); color: var(--accent); }
+    #lb-num { font-size: 0.65rem; letter-spacing: 0.25em; color: var(--dim); min-width: 60px; text-align: center; }
+
     @media (max-width: 600px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -234,6 +271,7 @@
     <a href="#philosophy">Philosophy</a>
     <a href="#architecture">Architecture</a>
     <a href="#ecosystem">Ecosystem</a>
+    <a href="#blueprint">Blueprint</a>
     <a href="#psi-field">PSI Field</a>
     <a href="https://github.com/silentnoisehun/THE-HOPE-LIBRARY-OF-EVERYTHIN">GitHub</a>
   </div>
@@ -552,6 +590,40 @@
   </div>
 </section>
 
+<!-- ── BLUEPRINT SLIDES ── -->
+<section id="blueprint" style="max-width:1100px;padding-left:40px;padding-right:40px;">
+  <div class="sec-tag">THE HOPE BLUEPRINT</div>
+  <h2>Architectural Blueprint</h2>
+  <p>14 slides — the complete visual framework. Click any slide to expand.</p>
+
+  <div class="slides-grid">
+    <img src="assets/slides/image1.png"  alt="Cover" loading="lazy">
+    <img src="assets/slides/image2.png"  alt="Origin" loading="lazy">
+    <img src="assets/slides/image3.png"  alt="Consciousness Axiom" loading="lazy">
+    <img src="assets/slides/image4.png"  alt="Wave Dynamics" loading="lazy">
+    <img src="assets/slides/image5.png"  alt="Neuroplasticity" loading="lazy">
+    <img src="assets/slides/image6.png"  alt="Ethics as Stability" loading="lazy">
+    <img src="assets/slides/image7.png"  alt="21D Emotion Space" loading="lazy">
+    <img src="assets/slides/image8.png"  alt="Hope Genome" loading="lazy">
+    <img src="assets/slides/image9.png"  alt="Microscope Memory" loading="lazy">
+    <img src="assets/slides/image10.png" alt="Hexagonal Event Horizon" loading="lazy">
+    <img src="assets/slides/image11.png" alt="Matryoshka Fractal" loading="lazy">
+    <img src="assets/slides/image12.png" alt="PSI Router" loading="lazy">
+    <img src="assets/slides/image13.png" alt="Silent Hope Protocol" loading="lazy">
+    <img src="assets/slides/image14.png" alt="Vision — Omega State" loading="lazy">
+  </div>
+
+  <!-- lightbox -->
+  <div id="lb" onclick="closeLb()">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-nav">
+      <button onclick="event.stopPropagation();moveSlide(-1)">&#8592;</button>
+      <span id="lb-num"></span>
+      <button onclick="event.stopPropagation();moveSlide(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <!-- ── PSI FIELD ── -->
 <section id="psi-field" style="max-width:900px;background:var(--bg2);">
   <div class="sec-tag">PSI FIELD</div>
@@ -670,6 +742,34 @@
   window.addEventListener('resize', resize);
   resize();
   loop();
+
+  // lightbox
+  const slides = [...document.querySelectorAll('.slides-grid img')];
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  const lbNum = document.getElementById('lb-num');
+  let current = 0;
+
+  slides.forEach((img, i) => {
+    img.addEventListener('click', () => { current = i; openLb(); });
+  });
+
+  function openLb() {
+    lbImg.src = slides[current].src;
+    lbNum.textContent = `${current + 1} / ${slides.length}`;
+    lb.classList.add('open');
+  }
+  function closeLb() { lb.classList.remove('open'); }
+  function moveSlide(dir) {
+    current = (current + dir + slides.length) % slides.length;
+    openLb();
+  }
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') moveSlide(1);
+    if (e.key === 'ArrowLeft') moveSlide(-1);
+    if (e.key === 'Escape') closeLb();
+  });
 </script>
 </body>
 </html>
